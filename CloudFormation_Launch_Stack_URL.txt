@@ -1,0 +1,1 @@
+https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack
