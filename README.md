@@ -37,7 +37,7 @@ The solution adheres to AWS best practices for security, modularity, and maintai
 - **Generate the Launch Stack URL:**  
 Which will look something like this: 
 https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack
-(This is my CloudFormation Launch Stack URL)
+<p>(This is my CloudFormation Launch Stack URL)</p>
 
 - **Open the URL** in your browser (while logged into AWS).
 - **Follow the prompts** to create the stack.
@@ -54,8 +54,10 @@ No extra configuration needed.
 ### 3. Run the Inventory Script
 python3 aws_inventory.py WibixReadOnlyStack
 or, using the Launch Stack URL:
-python3 aws_inventory.py "https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack"
 
+```
+python3 aws_inventory.py "https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack"
+```
 
 - The script will:
   - Wait for the stack to be created (if not already).
@@ -63,12 +65,4 @@ python3 aws_inventory.py "https://console.aws.amazon.com/cloudformation/home?reg
   - Summarize the resource counts.
 
 ---
-
-## Script Features
-
-- **No explicit credentials:** Uses the default AWS credential provider chain (environment variables, config files, or instance role).
-- **Stack-aware:** Accepts either a stack name or a CloudFormation Launch Stack URL.
-- **Waits for stack creation:** Polls the stack status and waits for creation to complete.
-- **Fetches inventory:** Lists EC2 instances, S3 buckets, and RDS databases with details.
-- **Modular and extensible:** Easy to add more AWS resource fetchers.
 
