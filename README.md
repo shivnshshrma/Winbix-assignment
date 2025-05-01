@@ -36,7 +36,7 @@ The solution adheres to AWS best practices for security, modularity, and maintai
 - **Upload the template** (`cloud-formation.yaml`) to an S3 bucket.
 - **Generate the Launch Stack URL:**  
 Which will look something like this: 
-[https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack](https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack)
+https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://wibix-cf-templates-shivanshkumar.s3.ap-south-1.amazonaws.com/cloud-formation.yaml&stackName=WibixReadOnlyStack
 (This is my CloudFormation Launch Stack URL)
 
 - **Open the URL** in your browser (while logged into AWS).
