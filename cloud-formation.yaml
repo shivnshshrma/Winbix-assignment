@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Wixbix Consulting - Internship Assessment - Read-Only Access Template'
+
+Resources:
+  # IAM Role for Read-Only Access
+  ReadOnlyRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      # Trust policy: allows EC2 instances to assume this role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'ec2.amazonaws.com'  # Only EC2 instances can assume this role
+            Action: 'sts:AssumeRole'
+      # Attach AWS managed ReadOnlyAccess policy for broad read-only permissions
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+      Path: '/'
+      RoleName: 'WibixReadOnlyRole'  # Fixed role name; consider using a parameter for flexibility
+
+  # Instance Profile for the Read-Only Role
+  ReadOnlyInstanceProfile:
+    Type: 'AWS::IAM::InstanceProfile'
+    Properties:
+      Path: '/'
+      Roles:
+        - !Ref ReadOnlyRole  # Attach the above role to this instance profile
+
+Outputs:
+  RoleARN:
+    Description: 'ARN of the Read-Only Role'
+    Value: !GetAtt ReadOnlyRole.Arn
+    Export:
+      Name: !Sub '${AWS::StackName}-RoleARN'
+  
+  InstanceProfileARN:
+    Description: 'Name of the Instance Profile (not ARN)'
+    Value: !Ref ReadOnlyInstanceProfile
+    Export:
+      Name: !Sub '${AWS::StackName}-InstanceProfileName'
